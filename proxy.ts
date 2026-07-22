@@ -1,6 +1,7 @@
+// proxy.ts  (was middleware.ts — same root location, next to package.json)
 import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
 	if (req.nextUrl.pathname.startsWith('/api/') && req.nextUrl.pathname !== '/api/health') {
 		const authHeader = req.headers.get('authorization');
 		const expected = `Bearer ${process.env.CONSOLE_API_KEY}`;
